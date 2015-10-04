@@ -63,10 +63,6 @@ public class KoneksiPengarang {
                 String nama = rs.getString("nama_p");
                 String alamat = rs.getString("alamat_p");
                 System.out.println(id + "  " + nama + "   " + alamat);
-
-                /*System.out.print("ID: " + id);
-                System.out.print(", Nama: " + nama);
-                System.out.print(", Alamat: " + alamat);*/
             }
             System.out.println();
 
