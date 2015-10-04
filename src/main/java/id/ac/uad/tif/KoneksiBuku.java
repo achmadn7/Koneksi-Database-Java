@@ -63,11 +63,6 @@ public class KoneksiBuku {
                 String judul = rs.getString("judul");
                 int harga = rs.getInt("harga");
                 System.out.println(idbuku + "  " + idkat + "   " + judul + "  " + "  " + harga);
-
-                /*System.out.print("ID Buku: " + idbuku);
-                System.out.print(", ID Kategori: " + idkat);
-                System.out.print(", Judul: " + judul);
-                System.out.print(", Harga: " + harga);*/
             }
             System.out.println();
 
