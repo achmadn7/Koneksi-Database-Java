@@ -76,47 +76,16 @@ public class KoneksiBuku {
             e.printStackTrace();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("ProsesFailed : " + e.getMessage());
         } catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
+            System.err.println("Unknown Exception : " + e.getMessage());
         } finally{
-            //finally block used to close resources
             try{
                 if(conn!=null)
                     conn.close();
             }catch(SQLException se){
                 se.printStackTrace();
-            }//end finally try
-        }//end try
-        System.out.println("Goodbye!");
-
-
-        /*try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Add Class Succes");
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/belajardb", "root", "9");
-
-            System.out.println("Connection is now " + (connection.isClosed() ? "Closed" : "Open"));
-
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO buku (id_buku,id_kategori,judul,harga) VALUES (?,?,?,?)");
-            preparedStatement.setString(1, "99995");
-            preparedStatement.setString(2, "C");
-            preparedStatement.setString(3, "Petualangan si Bolang");
-            preparedStatement.setInt(4, 43000);
-            int affectedRow = preparedStatement.executeUpdate();
-            System.out.println("Success Execute Update, Row Affected : " + affectedRow);
-
-
-        } catch (ClassNotFoundException e) {
-            System.err.println("Add Failed : " + e.getMessage());
-
-        } catch (SQLException e) {
-            System.err.println("Connection Failed : " + e.getMessage() + " " + e.getSQLState());
-
-        } catch (Exception e) {
-            System.err.println("Unknown Exception : " + e.getMessage());
-        }*/
+            }
+        }
     }
 }

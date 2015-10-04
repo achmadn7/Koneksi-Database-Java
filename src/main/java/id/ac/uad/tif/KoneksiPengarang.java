@@ -73,59 +73,18 @@ public class KoneksiPengarang {
 
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-
+            System.err.println("Proses Failed : " + e.getMessage());
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Connection Failed : " + e.getMessage() + " " + e.getSQLState());
         } catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
+            System.err.println("Unknown Exception : " + e.getMessage());
         } finally{
-            //finally block used to close resources
             try{
                 if(conn!=null)
                     conn.close();
             }catch(SQLException se){
                 se.printStackTrace();
-            }//end finally try
-        }//end try
-        System.out.println("Goodbye!");
-
-           /* try {
-                Class.forName("com.mysql.jdbc.Driver");
-                System.out.println("Add Class Succes");
-
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/belajardb", "root", "9");
-
-                System.out.println("Connection is now " + (connection.isClosed() ? "Closed" : "Open"));
-
-                //Insert
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO pengarang (id,nama_p,alamat_p) VALUES (?,?,?)");
-                /*preparedStatement.setString(1, "128-282");
-                preparedStatement.setString(2, "Syariful F");
-                preparedStatement.setString(3, "Margaria No. 3 Bantul");
-                int affectedRow = preparedStatement.executeUpdate();
-                System.out.println("Success Execute Update, Row Affected : " + affectedRow);
-
-                //Update
-                String sql = "UPDATE pengarang SET id=?, nama_p=?, alamat_p=? WHERE id=128-282";
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, "128-282");
-                preparedStatement.setString(2, "Syariful F");
-                preparedStatement.setString(3, "Margaria No. 3 Magelang");
-                int affectedRow = preparedStatement.executeUpdate();;
-                if (affectedRow > 0) {
-                    System.out.println("An existing pengarang was updated successfully!");
-                }
-
-            } catch (ClassNotFoundException e) {
-                System.err.println("Add Failed : " + e.getMessage());
-
-            } catch (SQLException e) {
-                System.err.println("Connection Failed : " + e.getMessage() + " " + e.getSQLState());
-
-            } catch (Exception e) {
-                System.err.println("Unknown Exception : " + e.getMessage());
-            }*/
+            }
+        }
     }
 }

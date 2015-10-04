@@ -44,27 +44,20 @@ public class MainApp {
 
             }
             System.out.println();
-
-
-
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-
+            System.err.println("Join Failed : "+e.getMessage());
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch(Exception e){
-            //Handle errors for Class.forName
-            e.printStackTrace();
+            System.err.println("Connection Failed : " + e.getMessage() + " " +e.getSQLState());
+        } catch (Exception e) {
+            System.err.println("Unknown Exception : "+e.getMessage());
         } finally{
-            //finally block used to close resources
             try{
                 if(conn!=null)
                     conn.close();
             }catch(SQLException se){
                 se.printStackTrace();
-            }//end finally try
-        }//end try
-        System.out.println("Goodbye!");
+            }
+        }
     }
 
 
