@@ -1,9 +1,6 @@
 package id.ac.uad.tif;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by an on 03/10/15.
@@ -52,6 +49,20 @@ public class KoneksiKategori {
             String sql = "DELETE FROM kategori " +
                     "WHERE id_kategori = 'C'";
             stmt.executeUpdate(sql);*/
+
+            //Select
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String query ="SELECT id_kategori, kategori FROM kategori";
+            ResultSet rs = stmt.executeQuery(query);
+            System.out.println();
+            System.out.println("ID Kategori, Kategori:");
+            while (rs.next()) {
+                String idkat = rs.getString("id_kategori");
+                String kat = rs.getString("kategori");
+                System.out.println(idkat + "  " + kat);
+            }
+            System.out.println();
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

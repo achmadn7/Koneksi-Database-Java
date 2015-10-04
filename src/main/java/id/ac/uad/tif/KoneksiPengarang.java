@@ -1,10 +1,7 @@
 package id.ac.uad.tif;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by an on 03/10/15.
@@ -53,6 +50,27 @@ public class KoneksiPengarang {
             String sql = "DELETE FROM pengarang " +
                     "WHERE id = '125-989'";
             stmt.executeUpdate(sql);*/
+
+            //Select
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String query ="SELECT id, nama_p, alamat_p FROM pengarang";
+            ResultSet rs = stmt.executeQuery(query);
+            System.out.println();
+            System.out.println("ID, Nama, Alamat:");
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String nama = rs.getString("nama_p");
+                String alamat = rs.getString("alamat_p");
+                System.out.println(id + "  " + nama + "   " + alamat);
+
+                /*System.out.print("ID: " + id);
+                System.out.print(", Nama: " + nama);
+                System.out.print(", Alamat: " + alamat);*/
+            }
+            System.out.println();
+
+
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

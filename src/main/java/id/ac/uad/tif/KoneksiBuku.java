@@ -1,9 +1,6 @@
 package id.ac.uad.tif;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by an on 03/10/15.
@@ -52,6 +49,28 @@ public class KoneksiBuku {
             String sql = "DELETE FROM buku " +
                     "WHERE id_buku = '99991'";
             stmt.executeUpdate(sql);*/
+
+            //Select
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String query ="SELECT id_buku, id_kategori, judul, harga FROM buku";
+            ResultSet rs = stmt.executeQuery(query);
+            System.out.println();
+            System.out.println("ID Buku, ID Kategori, Judul, Harga:");
+            while (rs.next()) {
+                String idbuku = rs.getString("id_buku");
+                String idkat = rs.getString("id_kategori");
+                String judul = rs.getString("judul");
+                int harga = rs.getInt("harga");
+                System.out.println(idbuku + "  " + idkat + "   " + judul + "  " + "  " + harga);
+
+                /*System.out.print("ID Buku: " + idbuku);
+                System.out.print(", ID Kategori: " + idkat);
+                System.out.print(", Judul: " + judul);
+                System.out.print(", Harga: " + harga);*/
+            }
+            System.out.println();
+
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
